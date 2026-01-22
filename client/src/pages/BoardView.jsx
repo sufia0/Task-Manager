@@ -81,7 +81,7 @@ const BoardView = () => {
 
   const fetchBoard = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/boards/${id}`);
+      const res = await axios.get(`${"https://taskflow-api-0bfc.onrender.com"}/api/boards/${id}`);
       setBoard(res.data);
       setLoading(false);
     } catch (err) {
@@ -93,7 +93,7 @@ const BoardView = () => {
   const addTask = async (columnId) => {
     if (!newTaskContent) return;
     try {
-      const res = await axios.post("${import.meta.env.VITE_API_URL}/api/tasks", {
+      const res = await axios.post(`${"https://taskflow-api-0bfc.onrender.com"}/api/tasks`, {
         content: newTaskContent,
         columnId,
         boardId: id,
@@ -142,7 +142,7 @@ const BoardView = () => {
     setBoard(newBoard);
 
     try {
-      await axios.put(`${import.meta.env.VITE_API_URL}/api/tasks/${draggableId}/move`, {
+      await axios.put(`${"https://taskflow-api-0bfc.onrender.com"}/api/tasks/${draggableId}/move`, {
         columnId: destCol.id,
         order: destination.index,
       });

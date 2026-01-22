@@ -33,7 +33,7 @@ const Dashboard = () => {
 
   const fetchBoards = async () => {
     try {
-      const res = await axios.get("${import.meta.env.VITE_API_URL}/api/boards");
+      const res = await axios.get(`${"https://taskflow-api-0bfc.onrender.com"}/api/boards`);
       setBoards(res.data);
     } catch (err) {
       toast.error("Failed to load boards");
@@ -47,7 +47,7 @@ const Dashboard = () => {
     if (!newBoardTitle) return;
 
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/boards`, { title: newBoardTitle });
+      const res = await axios.post(`${"https://taskflow-api-0bfc.onrender.com"}/api/boards`, { title: newBoardTitle });
       setBoards([...boards, res.data]);
       setNewBoardTitle("");
       toast.success("Board created successfully!");

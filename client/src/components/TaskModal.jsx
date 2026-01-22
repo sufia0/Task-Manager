@@ -11,7 +11,7 @@ const TaskModal = ({ task, onClose, onUpdate, onDelete }) => {
 
   const handleSave = async () => {
     try {
-      const res = await axios.put(`${import.meta.env.VITE_API_URL}/api/tasks/${task.id}`, {
+      const res = await axios.put(`${"https://taskflow-api-0bfc.onrender.com"}/api/tasks/${task.id}`, {
         content,
         description,
         priority,
@@ -28,7 +28,7 @@ const TaskModal = ({ task, onClose, onUpdate, onDelete }) => {
   const handleDelete = async () => {
     if (!confirm("Are you sure you want to delete this task?")) return;
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/api/tasks/${task.id}`);
+      await axios.delete(`${"https://taskflow-api-0bfc.onrender.com"}/api/tasks/${task.id}`);
       onDelete(task.id);
       onClose();
       toast.success("Task deleted");
