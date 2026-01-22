@@ -1,0 +1,92 @@
+/* client/src/CalendarStyles.css */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@400;500;600&display=swap');
+
+/* Main Container */
+.custom-calendar {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Remove default borders for a cleaner look */
+.rbc-month-view {
+  border: 1px solid #e5e7eb !important;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.rbc-header {
+  padding: 15px 0 !important;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background-color: #f9fafb;
+  border-bottom: 1px solid #e5e7eb !important;
+  color: #374151;
+}
+
+/* 🔴 SUNDAY (First Column) Styling */
+.rbc-header:first-child {
+  color: #dc2626 !important; /* Red Header */
+}
+.rbc-day-bg:first-child {
+  background-color: rgba(254, 242, 242, 0.4) !important; /* Subtle Red Tint */
+}
+.rbc-row .rbc-date-cell:first-child {
+  color: #dc2626 !important; /* Red Numbers */
+  font-weight: 700;
+}
+
+/* 🔵 SATURDAY (Last Column) Styling */
+.rbc-header:last-child {
+  color: #2563eb !important; /* Blue Header */
+}
+.rbc-row .rbc-date-cell:last-child {
+  color: #2563eb !important; /* Blue Numbers */
+  font-weight: 700;
+}
+
+/* Date Cells (The Numbers) */
+.rbc-date-cell {
+  text-align: center !important;
+  padding: 8px !important;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+/* Today's Date Circle */
+.rbc-today {
+  background-color: transparent !important; /* Remove default yellow block */
+}
+.rbc-today .rbc-button-link {
+  background-color: #1f2937;
+  color: white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Events (The Blue Bars) */
+.rbc-event {
+  background-color: #3b82f6 !important;
+  border: none !important;
+  border-radius: 4px !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  font-size: 0.8rem !important;
+  padding: 2px 5px !important;
+}
+
+/* Grid Lines */
+.rbc-month-row {
+  border-top: 1px solid #f3f4f6 !important;
+}
+.rbc-day-bg + .rbc-day-bg {
+  border-left: 1px solid #f3f4f6 !important;
+}

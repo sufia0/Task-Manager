@@ -1,0 +1,67 @@
+// server/prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  avatar    String?  // Optional URL to image
+  createdAt DateTime @default(now())
+
+  boards    Board[]  // Boards owned by user
+  tasks     Task[]   // Tasks assigned to user
+}
+
+model Board {
+  id        String   @id @default(uuid())
+  title     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  ownerId   String
+  owner     User     @relation(fields: [ownerId], references: [id])
+
+  columns   Column[]
+}
+
+model Column {
+  id        String   @id @default(uuid())
+  title     String
+  order     Int      // Crucial for Kanban ordering (0, 1, 2...)
+  
+  boardId   String
+  board     Board    @relation(fields: [boardId], references: [id], onDelete: Cascade)
+
+  tasks     Task[]
+}
+
+model Task {
+  id          String    @id @default(uuid())
+  content     String
+  description String?
+  priority    Priority  @default(LOW)
+  dueDate     DateTime?
+  order       Int       // To track position within the column
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  columnId    String
+  column      Column    @relation(fields: [columnId], references: [id], onDelete: Cascade)
+
+  assigneeId  String?
+  assignee    User?     @relation(fields: [assigneeId], references: [id])
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}
