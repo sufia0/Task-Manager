@@ -4,7 +4,7 @@ import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
-import { Plus, Layout, LogOut, User, Search, Star, Sparkles } from "lucide-react";
+import { Plus, Layout, LogOut, User, Search, Star, Sparkles, Trash2 } from "lucide-react";
 
 const Dashboard = () => {
   const { user, logout } = useContext(AuthContext);
@@ -65,6 +65,21 @@ const Dashboard = () => {
       toast.success("Board created successfully!");
     } catch (err) {
       toast.error("Failed to create board");
+    }
+  };
+
+  const deleteBoard = async (boardId, boardTitle, e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    if (!confirm(`Are you sure you want to delete "${boardTitle}"? This action cannot be undone.`)) return;
+
+    try {
+      await axios.delete(`${"https://taskflow-api-0bfc.onrender.com"}/api/boards/${boardId}`);
+      setBoards(boards.filter(board => board.id !== boardId));
+      toast.success("Board deleted successfully!");
+    } catch (err) {
+      toast.error("Failed to delete board");
     }
   };
 
@@ -281,9 +296,18 @@ const Dashboard = () => {
                       <h3 className="text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-400 transition-all duration-300 truncate flex-1 pr-2">
                         {board.title}
                       </h3>
-                      <button className="opacity-0 group-hover:opacity-100 transition-all duration-300 p-2 hover:bg-yellow-400/20 rounded-full">
-                        <Star className="h-5 w-5 text-yellow-400 hover:fill-yellow-400" />
-                      </button>
+                      <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                        <button 
+                          onClick={(e) => deleteBoard(board.id, board.title, e)}
+                          className="p-2 hover:bg-red-500/30 rounded-full transition-all hover:scale-110 z-10"
+                          title="Delete board"
+                        >
+                          <Trash2 className="h-5 w-5 text-red-400 hover:text-red-300" />
+                        </button>
+                        <button className="p-2 hover:bg-yellow-400/20 rounded-full transition-all hover:scale-110">
+                          <Star className="h-5 w-5 text-yellow-400 hover:fill-yellow-400" />
+                        </button>
+                      </div>
                     </div>
                     <p className="text-sm text-white/50 font-medium">
                       Updated {new Date(board.createdAt).toLocaleDateString()}
