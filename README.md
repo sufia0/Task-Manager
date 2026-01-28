@@ -1,7 +1,6 @@
 # 🚀 TaskFlow - Project Management App
 
-<img width="1919" height="927" alt="Screenshot 2026-01-22 213357" src="https://github.com/user-attachments/assets/aadbdd57-101d-4d6a-9caf-3c00a5855dfe" />
-
+<img width="1919" height="927" alt="Screenshot 2026-01-22 213357" src="https://github.com/user-attachments/assets/35f819de-b479-4296-bada-8f8b736f4059" />
 
 **TaskFlow** is a full-stack project management application designed to streamline team collaboration. It features secure authentication, interactive task boards, and a seamless responsive design. Built with the MERN stack (PostgreSQL version) and deployed for high availability.
 
@@ -37,12 +36,11 @@
 
 | Login Page | Calendar |
 |:---:|:---:|
-| <img src="https://github.com/user-attachments/assets/f763ae04-d709-4b37-9eaf-d3f5be1c63a9" width="400" alt="Login Page"> | <img src="https://github.com/user-attachments/assets/b31763b6-f16f-4f46-862d-de4e36abc184" width="400" alt="Calendar"> |
+| <img src="https://github.com/user-attachments/assets/f763ae04-d709-4b37-9eaf-d3f5be1c63a9" width="400" alt="Login Page"> | <img src="https://github.com/user-attachments/assets/9c97470c-9a88-40ed-ab99-b264a8f9d46c" width="400" alt="Calendar"> |
 
 | Dashboard View | Task Details |
 |:---:|:---:|
-| <img src="https://github.com/user-attachments/assets/aadbdd57-101d-4d6a-9caf-3c00a5855dfe" width="400" alt="Dashboard"> | <img src="https://github.com/user-attachments/assets/dc7fac1c-0ef3-4c93-a8ad-b9300dd977b8" width="400" alt="Task Modal"> |
-
+| <img src="https://github.com/user-attachments/assets/35f819de-b479-4296-bada-8f8b736f4059" width="400" alt="Dashboard"> | <img src="https://github.com/user-attachments/assets/cdf7baa1-a167-4a19-9ea0-617c629f7b57" width="400" alt="Task Modal"> |
 
 ---
 
