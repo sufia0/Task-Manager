@@ -194,25 +194,25 @@ const BoardView = () => {
       
       {/* Modern Overlapping Background Text Design */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Large overlapping text elements */}
-        <div className="absolute -top-32 -left-40 text-[25rem] font-black text-cyan-500/3 transform -rotate-12 select-none leading-none">
+        {/* Large overlapping text elements - using darker colors for better readability */}
+        <div className="absolute -top-32 -left-40 text-[25rem] font-black text-slate-950/40 transform -rotate-12 select-none leading-none">
           BOARD
         </div>
-        <div className="absolute top-1/4 right-0 text-[20rem] font-black text-purple-500/3 transform rotate-6 select-none leading-none">
+        <div className="absolute top-1/4 right-0 text-[20rem] font-black text-purple-950/40 transform rotate-6 select-none leading-none">
           TASKS
         </div>
-        <div className="absolute bottom-0 left-1/4 text-[18rem] font-black text-pink-500/3 transform -rotate-6 select-none leading-none">
+        <div className="absolute bottom-0 left-1/4 text-[18rem] font-black text-indigo-950/40 transform -rotate-6 select-none leading-none">
           WORK
         </div>
         
-        {/* Medium overlapping words */}
-        <div className="absolute top-1/3 left-1/5 text-9xl font-black text-orange-400/5 transform rotate-45 select-none">
+        {/* Medium overlapping words - darker variants */}
+        <div className="absolute top-1/3 left-1/5 text-9xl font-black text-slate-900/30 transform rotate-45 select-none">
           PLAN
         </div>
-        <div className="absolute bottom-1/4 right-1/5 text-8xl font-black text-green-400/5 transform -rotate-30 select-none">
+        <div className="absolute bottom-1/4 right-1/5 text-8xl font-black text-violet-950/30 transform -rotate-30 select-none">
           TRACK
         </div>
-        <div className="absolute top-2/3 right-1/3 text-7xl font-black text-blue-400/5 transform rotate-15 select-none">
+        <div className="absolute top-2/3 right-1/3 text-7xl font-black text-purple-950/30 transform rotate-15 select-none">
           ACHIEVE
         </div>
         
