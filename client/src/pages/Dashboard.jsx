@@ -4,17 +4,17 @@ import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
-import { Plus, Layout, LogOut, User, Search, Star, Filter } from "lucide-react"; // Added Star and Filter icons for innovation
+import { Plus, Layout, LogOut, User, Search, Star, Sparkles } from "lucide-react";
 
 const Dashboard = () => {
   const { user, logout } = useContext(AuthContext);
   const [boards, setBoards] = useState([]);
   const [newBoardTitle, setNewBoardTitle] = useState("");
   const [loading, setLoading] = useState(true);
-  const [searchQuery, setSearchQuery] = useState(""); // New state for search functionality
-  const [filteredBoards, setFilteredBoards] = useState([]); // Filtered boards based on search
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredBoards, setFilteredBoards] = useState([]);
 
-  // Expanded list of vibrant gradients for boards
+  // Enhanced vibrant gradients for boards
   const gradients = [
     "bg-gradient-to-br from-purple-600 via-pink-500 to-red-500",
     "bg-gradient-to-br from-blue-500 via-cyan-400 to-green-400",
@@ -26,7 +26,6 @@ const Dashboard = () => {
     "bg-gradient-to-br from-violet-600 via-fuchsia-500 to-rose-500",
   ];
 
-  // Helper to pick a gradient based on the board ID (so it stays consistent)
   const getGradient = (id) => {
     const charCode = id.charCodeAt(0) + id.charCodeAt(id.length - 1);
     return gradients[charCode % gradients.length];
@@ -36,7 +35,6 @@ const Dashboard = () => {
     fetchBoards();
   }, []);
 
-  // New effect to filter boards based on search query
   useEffect(() => {
     setFilteredBoards(
       boards.filter((board) =>
@@ -71,180 +69,263 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-pink-600 font-sans text-white relative overflow-hidden">
-      {/* Vibrant Background Words/Elements with Overlapping for Modern Stylish Look */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
-        <div className="absolute top-10 left-10 text-8xl font-black text-yellow-300 transform rotate-12 z-10">TaskFlow</div>
-        <div className="absolute top-1/4 right-20 text-6xl font-black text-cyan-300 transform -rotate-6 z-20">Productivity</div>
-        <div className="absolute bottom-20 left-1/4 text-5xl font-black text-rose-300 transform rotate-45 z-5">Manage</div>
-        <div className="absolute bottom-1/3 right-10 text-9xl font-black text-lime-300 transform -rotate-12 z-15">Projects</div>
-        <div className="absolute top-1/2 left-1/2 text-4xl font-black text-orange-300 transform rotate-90 z-25">Workflow</div>
-        <div className="absolute top-3/4 left-1/5 text-7xl font-black text-violet-300 transform rotate-30 z-5">Create</div>
-        <div className="absolute bottom-1/4 right-1/3 text-6xl font-black text-emerald-300 transform -rotate-45 z-10">Innovate</div>
-        <div className="absolute top-1/6 right-1/4 text-5xl font-black text-red-300 transform rotate-60 z-20">Achieve</div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 font-sans text-white relative overflow-hidden">
+      {/* Modern Overlapping Background Text Design */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Layer 1 - Large overlapping text */}
+        <div className="absolute -top-20 -left-32 text-[20rem] font-black text-cyan-500/5 transform -rotate-12 select-none leading-none">
+          TASK
+        </div>
+        <div className="absolute top-40 right-0 text-[18rem] font-black text-pink-500/5 transform rotate-6 select-none leading-none">
+          FLOW
+        </div>
+        <div className="absolute top-1/3 -left-20 text-[15rem] font-black text-purple-500/5 transform -rotate-6 select-none leading-none">
+          PRO
+        </div>
+        <div className="absolute bottom-20 right-10 text-[16rem] font-black text-orange-500/5 transform rotate-12 select-none leading-none">
+          JECT
+        </div>
+        
+        {/* Layer 2 - Medium overlapping words */}
+        <div className="absolute top-1/4 left-1/4 text-8xl font-black text-yellow-400/8 transform rotate-45 select-none">
+          CREATE
+        </div>
+        <div className="absolute bottom-1/3 right-1/4 text-7xl font-black text-green-400/8 transform -rotate-12 select-none">
+          MANAGE
+        </div>
+        <div className="absolute top-2/3 left-1/3 text-9xl font-black text-blue-400/8 transform rotate-90 select-none">
+          BUILD
+        </div>
+        
+        {/* Layer 3 - Scattered smaller words */}
+        <div className="absolute top-1/2 right-1/3 text-5xl font-black text-red-400/10 transform -rotate-45 select-none">
+          ORGANIZE
+        </div>
+        <div className="absolute bottom-1/4 left-1/5 text-6xl font-black text-violet-400/10 transform rotate-30 select-none">
+          INNOVATE
+        </div>
+        <div className="absolute top-1/6 right-1/5 text-5xl font-black text-teal-400/10 transform -rotate-20 select-none">
+          ACHIEVE
+        </div>
+        
+        {/* Animated gradient orbs for depth */}
+        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse-slower"></div>
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse-slowest"></div>
       </div>
       
-      {/* 1. Navbar - Colorful glassmorphism with vibrant accents */}
-      <nav className="bg-white/20 backdrop-blur-lg border-b border-white/30 sticky top-0 z-30 shadow-2xl">
+      {/* Glassmorphic Navbar */}
+      <nav className="bg-white/5 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50 shadow-2xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center gap-2 group">
-              <div className="bg-gradient-to-r from-yellow-400 to-orange-500 p-2 rounded-xl group-hover:scale-110 transition-transform duration-200 shadow-lg">
-                <Layout className="w-6 h-6 text-white" />
+          <div className="flex justify-between h-20">
+            <div className="flex items-center gap-3 group cursor-pointer">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-2xl blur-lg group-hover:blur-xl transition-all duration-300 opacity-70"></div>
+                <div className="relative bg-gradient-to-br from-cyan-400 via-purple-500 to-pink-500 p-3 rounded-2xl group-hover:scale-110 transition-transform duration-300 shadow-2xl">
+                  <Layout className="w-7 h-7 text-white" />
+                </div>
               </div>
-              <span className="text-xl font-black bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-pink-500 to-cyan-400 group-hover:from-cyan-400 group-hover:to-yellow-400 transition-all duration-300">
+              <span className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 group-hover:from-pink-400 group-hover:via-purple-400 group-hover:to-cyan-400 transition-all duration-500">
                 TaskFlow
               </span>
+              <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
             </div>
             
             <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full border border-white/30 hover:bg-white/30 transition-colors cursor-pointer shadow-lg">
-                <User size={16} className="text-white" />
-                <span className="text-sm font-semibold text-white">{user?.email?.split('@')[0]}</span>
+              <div className="flex items-center gap-3 px-5 py-2.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20 hover:bg-white/15 hover:border-purple-400/50 transition-all duration-300 cursor-pointer shadow-lg group">
+                <div className="p-1.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full">
+                  <User size={14} className="text-white" />
+                </div>
+                <span className="text-sm font-bold text-white/90 group-hover:text-white transition-colors">
+                  {user?.email?.split('@')[0]}
+                </span>
               </div>
               <button 
                 onClick={logout} 
-                className="p-2 text-white hover:text-red-300 transition-colors rounded-full hover:bg-red-500/20 hover:rotate-12 transform duration-200 shadow-lg"
+                className="group relative p-3 text-white hover:text-red-400 transition-all duration-300 rounded-full hover:bg-red-500/20 shadow-lg hover:shadow-red-500/50 hover:scale-110"
                 title="Logout"
               >
-                <LogOut size={20} />
+                <LogOut size={22} className="group-hover:rotate-12 transition-transform duration-300" />
               </button>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* 2. Hero Section - Vibrant gradients and overlapping text elements */}
-      <div className="bg-white/10 backdrop-blur-md border-b border-white/20 relative overflow-hidden shadow-inner">
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 to-pink-500/30"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
-          <h1 className="text-5xl font-black text-white animate-fade-in bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-pink-400 to-cyan-300 drop-shadow-lg">
-            Welcome back! 👋
-          </h1>
-          <p className="mt-4 text-xl text-white/90 animate-fade-in animation-delay-200 font-semibold drop-shadow-md">Manage your projects and track your productivity with vibrant style.</p>
+      {/* Hero Section with Modern Design */}
+      <div className="relative overflow-hidden border-b border-white/10">
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 via-pink-500/20 to-cyan-500/20"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+          <div className="mb-2 inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 backdrop-blur-sm rounded-full border border-purple-400/30">
+            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            <span className="text-sm font-semibold text-purple-200">Workspace Active</span>
+          </div>
           
-          {/* Create Board Input - Colorful and sleek */}
-          <div className="mt-12 max-w-xl">
+          <h1 className="text-7xl font-black text-white mt-6 animate-fade-in leading-tight">
+            Welcome back,
+            <span className="block bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 mt-2">
+              Creator! 👋
+            </span>
+          </h1>
+          <p className="mt-6 text-xl text-white/70 animate-fade-in animation-delay-200 font-medium max-w-2xl">
+            Manage your projects with style. Track progress, collaborate seamlessly, and achieve your goals.
+          </p>
+          
+          {/* Modern Create Board Input */}
+          <div className="mt-12 max-w-2xl">
             <form onSubmit={createBoard} className="relative group">
-              <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-                <Plus className="h-6 w-6 text-white/70 group-focus-within:text-yellow-300 group-focus-within:scale-110 transition-all duration-200" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-3xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
+              <div className="relative flex items-center bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 shadow-2xl overflow-hidden">
+                <div className="pl-6 pr-4 flex items-center pointer-events-none">
+                  <Plus className="h-6 w-6 text-purple-400" />
+                </div>
+                <input
+                  type="text"
+                  className="flex-1 py-5 bg-transparent placeholder-white/50 focus:outline-none text-white font-medium text-lg"
+                  placeholder="Create a new board (e.g., 'Marketing Launch')..."
+                  value={newBoardTitle}
+                  onChange={(e) => setNewBoardTitle(e.target.value)}
+                />
+                <button 
+                  type="submit" 
+                  className="m-2 px-8 py-3 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 text-white text-sm font-bold rounded-2xl hover:shadow-2xl hover:shadow-purple-500/50 hover:scale-105 transition-all duration-300 whitespace-nowrap"
+                >
+                  Create Board
+                </button>
               </div>
-              <input
-                type="text"
-                className="block w-full pl-14 pr-5 py-5 border border-white/30 rounded-3xl leading-5 bg-white/20 backdrop-blur-sm placeholder-white/70 focus:outline-none focus:bg-white/30 focus:ring-2 focus:ring-yellow-400 focus:border-transparent focus:shadow-2xl transition-all duration-300 shadow-xl text-white font-medium"
-                placeholder="Create a new board (e.g., 'Marketing Launch')..."
-                value={newBoardTitle}
-                onChange={(e) => setNewBoardTitle(e.target.value)}
-              />
-              <button 
-                type="submit" 
-                className="absolute inset-y-2.5 right-2.5 px-8 py-2.5 bg-gradient-to-r from-pink-500 to-red-500 text-white text-sm font-bold rounded-2xl hover:from-red-500 hover:to-pink-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-200"
-              >
-                Create
-              </button>
             </form>
           </div>
         </div>
       </div>
 
-      {/* 3. Boards Grid - Colorful cards with modern overlapping vibes */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
-        <div className="flex items-center justify-between mb-10">
-          <h2 className="text-3xl font-black text-white flex items-center gap-3 drop-shadow-lg">
-            <Layout size={28} className="text-yellow-300" /> 
-            Your Workspaces
-          </h2>
-          <span className="text-sm text-white/80 bg-white/20 backdrop-blur-sm px-5 py-3 rounded-full border border-white/30 shadow-xl font-semibold">
-            {filteredBoards.length} Active Project{filteredBoards.length !== 1 ? 's' : ''}
-          </span>
+      {/* Boards Grid Section */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+        <div className="flex items-center justify-between mb-12 flex-wrap gap-4">
+          <div>
+            <h2 className="text-4xl font-black text-white flex items-center gap-3">
+              <div className="p-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl">
+                <Layout size={28} className="text-white" />
+              </div>
+              Your Workspaces
+            </h2>
+            <p className="text-white/60 mt-2 ml-14 font-medium">Organize and manage all your projects</p>
+          </div>
+          <div className="flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 shadow-xl">
+            <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+            <span className="text-sm text-white/90 font-bold">
+              {filteredBoards.length} Active Project{filteredBoards.length !== 1 ? 's' : ''}
+            </span>
+          </div>
         </div>
 
-        {/* Search Bar - Colorful and modern */}
-        <div className="mb-10 max-w-md">
-          <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-              <Search className="h-6 w-6 text-white/70" />
+        {/* Modern Search Bar */}
+        <div className="mb-12 max-w-md">
+          <div className="relative group">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
+            <div className="relative flex items-center bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 shadow-xl overflow-hidden">
+              <div className="pl-5 pr-3 flex items-center pointer-events-none">
+                <Search className="h-5 w-5 text-purple-400" />
+              </div>
+              <input
+                type="text"
+                className="flex-1 py-4 pr-5 bg-transparent placeholder-white/50 focus:outline-none text-white font-medium"
+                placeholder="Search boards..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
             </div>
-            <input
-              type="text"
-              className="block w-full pl-14 pr-5 py-4 border border-white/30 rounded-2xl leading-5 bg-white/20 backdrop-blur-sm placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent focus:shadow-xl transition-all duration-300 shadow-lg text-white font-medium"
-              placeholder="Search boards..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
           </div>
         </div>
 
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3].map((n) => (
-              <div key={n} className="h-48 bg-white/20 rounded-3xl animate-pulse shadow-2xl"></div>
+              <div key={n} className="h-56 bg-white/5 rounded-3xl animate-pulse border border-white/10 shadow-xl"></div>
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            {/* New Board Card - Vibrant and interactive */}
+            {/* Create New Board Card */}
             <div 
               onClick={() => document.querySelector('input').focus()}
-              className="group border-2 border-dashed border-white/40 rounded-3xl p-10 flex flex-col items-center justify-center text-center cursor-pointer hover:border-yellow-400 hover:bg-yellow-400/20 hover:scale-105 transition-all duration-300 h-48 bg-white/10 backdrop-blur-sm shadow-2xl animate-bounce-in"
+              className="group relative border-2 border-dashed border-white/20 rounded-3xl p-12 flex flex-col items-center justify-center text-center cursor-pointer hover:border-purple-400/50 hover:bg-white/5 transition-all duration-300 h-56 backdrop-blur-sm shadow-xl animate-bounce-in overflow-hidden"
             >
-              <div className="p-5 bg-white/20 rounded-full group-hover:bg-yellow-400/30 group-hover:animate-pulse transition-all shadow-xl">
-                <Plus className="h-8 w-8 text-white/70 group-hover:text-yellow-300" />
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative">
+                <div className="p-6 bg-white/10 rounded-full group-hover:bg-gradient-to-r group-hover:from-purple-500/30 group-hover:to-cyan-500/30 transition-all duration-300 shadow-xl mb-4">
+                  <Plus className="h-10 w-10 text-white/70 group-hover:text-white group-hover:rotate-90 transition-all duration-300" />
+                </div>
+                <p className="text-lg font-bold text-white/80 group-hover:text-white transition-colors">Create New Board</p>
+                <p className="text-sm text-white/50 mt-2">Start a new project</p>
               </div>
-              <p className="mt-4 text-base font-bold text-white/80 group-hover:text-yellow-300">Create new board</p>
             </div>
 
-            {/* Actual Boards - Colorful, stylish with overlapping feel */}
+            {/* Actual Board Cards */}
             {filteredBoards.map((board, index) => (
               <Link 
                 to={`/board/${board.id}`} 
                 key={board.id} 
-                className={`relative group bg-white/20 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl hover:-rotate-2 transition-all duration-300 overflow-hidden border border-white/30 h-48 flex flex-col justify-between animate-slide-up`}
+                className="group relative bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-purple-500/20 hover:scale-105 transition-all duration-300 overflow-hidden border border-white/10 hover:border-purple-400/50 h-56 flex flex-col animate-slide-up"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                {/* Vibrant Header Strip */}
-                <div className={`h-4 w-full ${getGradient(board.id)} shadow-inner`} />
+                {/* Gradient Header */}
+                <div className={`h-2 w-full ${getGradient(board.id)}`} />
                 
-                <div className="p-7">
-                  <div className="flex justify-between items-start">
-                    <h3 className="text-xl font-bold text-white group-hover:text-yellow-300 transition-colors truncate flex-1 drop-shadow-md">
-                      {board.title}
-                    </h3>
-                    <button className="opacity-0 group-hover:opacity-100 transition-opacity p-2 hover:bg-yellow-400/20 rounded-full shadow-lg">
-                      <Star className="h-5 w-5 text-white/70 hover:text-yellow-300" />
-                    </button>
+                {/* Hover Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                <div className="relative flex-1 p-7 flex flex-col justify-between">
+                  <div>
+                    <div className="flex justify-between items-start mb-4">
+                      <h3 className="text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-400 transition-all duration-300 truncate flex-1 pr-2">
+                        {board.title}
+                      </h3>
+                      <button className="opacity-0 group-hover:opacity-100 transition-all duration-300 p-2 hover:bg-yellow-400/20 rounded-full">
+                        <Star className="h-5 w-5 text-yellow-400 hover:fill-yellow-400" />
+                      </button>
+                    </div>
+                    <p className="text-sm text-white/50 font-medium">
+                      Updated {new Date(board.createdAt).toLocaleDateString()}
+                    </p>
                   </div>
-                  <p className="text-sm text-white/60 mt-3 font-medium drop-shadow-sm">
-                    Updated {new Date(board.createdAt).toLocaleDateString()}
-                  </p>
-                </div>
 
-                <div className="px-7 pb-6 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity">
-                   <span className="text-sm font-bold text-yellow-300 bg-white/20 px-4 py-2 rounded-xl hover:bg-white/30 transition-colors shadow-lg">Open Board &rarr;</span>
+                  <div className="flex justify-between items-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                    <span className="text-sm font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent flex items-center gap-2">
+                      Open Board 
+                      <span className="text-lg">→</span>
+                    </span>
+                  </div>
                 </div>
               </Link>
             ))}
           </div>
         )}
 
+        {/* Empty States */}
         {!loading && filteredBoards.length === 0 && searchQuery && (
           <div className="text-center py-32">
-            <div className="bg-white/20 p-8 rounded-full inline-block mb-8 shadow-2xl">
-              <Search className="h-12 w-12 text-white/70" />
+            <div className="relative inline-block mb-8">
+              <div className="absolute inset-0 bg-purple-500/20 blur-2xl"></div>
+              <div className="relative bg-white/10 p-10 rounded-full backdrop-blur-sm shadow-2xl">
+                <Search className="h-16 w-16 text-purple-400" />
+              </div>
             </div>
-            <h3 className="text-2xl font-bold text-white drop-shadow-lg">No boards match your search</h3>
-            <p className="mt-3 text-white/80 font-medium drop-shadow-md">Try a different keyword or create a new board.</p>
+            <h3 className="text-3xl font-bold text-white mb-3">No boards match your search</h3>
+            <p className="text-white/60 font-medium text-lg">Try a different keyword or create a new board.</p>
           </div>
         )}
 
         {!loading && boards.length === 0 && !searchQuery && (
           <div className="text-center py-32">
-            <div className="bg-white/20 p-8 rounded-full inline-block mb-8 animate-bounce shadow-2xl">
-              <Search className="h-12 w-12 text-white/70" />
+            <div className="relative inline-block mb-8">
+              <div className="absolute inset-0 bg-cyan-500/20 blur-2xl animate-pulse"></div>
+              <div className="relative bg-white/10 p-10 rounded-full backdrop-blur-sm shadow-2xl">
+                <Layout className="h-16 w-16 text-cyan-400" />
+              </div>
             </div>
-            <h3 className="text-2xl font-bold text-white drop-shadow-lg">No boards found</h3>
-            <p className="mt-3 text-white/80 font-medium drop-shadow-md">Get started by creating a new project board above.</p>
+            <h3 className="text-3xl font-bold text-white mb-3">No boards yet</h3>
+            <p className="text-white/60 font-medium text-lg">Get started by creating your first project board above.</p>
           </div>
         )}
       </main>
@@ -252,29 +333,53 @@ const Dashboard = () => {
       {/* Custom CSS for animations */}
       <style jsx>{`
         @keyframes fade-in {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-          animation: fade-in 0.6s ease-out;
-        }
-        .animation-delay-200 {
-          animation-delay: 0.2s;
-        }
-        @keyframes slide-up {
           from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
         }
+        .animate-fade-in {
+          animation: fade-in 0.8s ease-out;
+        }
+        .animation-delay-200 {
+          animation-delay: 0.2s;
+          opacity: 0;
+          animation-fill-mode: forwards;
+        }
+        @keyframes slide-up {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
         .animate-slide-up {
-          animation: slide-up 0.5s ease-out;
+          animation: slide-up 0.6s ease-out;
+          animation-fill-mode: both;
         }
         @keyframes bounce-in {
-          0% { opacity: 0; transform: scale(0.8); }
-          50% { opacity: 1; transform: scale(1.05); }
+          0% { opacity: 0; transform: scale(0.9); }
+          50% { opacity: 1; transform: scale(1.02); }
           100% { opacity: 1; transform: scale(1); }
         }
         .animate-bounce-in {
-          animation: bounce-in 0.6s ease-out;
+          animation: bounce-in 0.7s ease-out;
+        }
+        @keyframes pulse-slow {
+          0%, 100% { opacity: 0.05; transform: scale(1); }
+          50% { opacity: 0.15; transform: scale(1.1); }
+        }
+        .animate-pulse-slow {
+          animation: pulse-slow 4s ease-in-out infinite;
+        }
+        @keyframes pulse-slower {
+          0%, 100% { opacity: 0.05; transform: scale(1); }
+          50% { opacity: 0.15; transform: scale(1.1); }
+        }
+        .animate-pulse-slower {
+          animation: pulse-slower 6s ease-in-out infinite;
+        }
+        @keyframes pulse-slowest {
+          0%, 100% { opacity: 0.05; transform: scale(1); }
+          50% { opacity: 0.15; transform: scale(1.1); }
+        }
+        .animate-pulse-slowest {
+          animation: pulse-slowest 8s ease-in-out infinite;
         }
       `}</style>
     </div>
