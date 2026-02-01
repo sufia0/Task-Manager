@@ -64,5 +64,29 @@ router.get("/:id", authMiddleware, async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 });
+// 4. DELETE A BOARD
+router.delete("/:id", authMiddleware, async (req, res) => {
+  const { id } = req.params;
 
+  try {
+    // Use deleteMany to ensure we only delete if the board belongs to the USER
+    // (Prisma's standard .delete() only checks ID, but .deleteMany() checks ID + Owner)
+    const result = await prisma.board.deleteMany({
+      where: {
+        id: id,
+        ownerId: req.user.id // SECURITY: Ensures user can only delete their own board
+      }
+    });
+
+    // If count is 0, it means the board didn't exist OR the user doesn't own it
+    if (result.count === 0) {
+      return res.status(404).json({ error: "Board not found or unauthorized" });
+    }
+
+    res.json({ message: "Board deleted successfully" });
+  } catch (err) {
+    console.error(err); // Good for debugging in Render logs
+    res.status(500).json({ error: "Server error" });
+  }
+});
 module.exports = router;
